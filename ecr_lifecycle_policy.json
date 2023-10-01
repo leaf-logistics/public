@@ -1,0 +1,32 @@
+{
+  "rules": [
+    {
+      "action": {
+        "type": "expire"
+      },
+      "selection": {
+        "countType": "imageCountMoreThan",
+        "countNumber": 3,
+        "tagStatus": "tagged",
+        "tagPrefixList": [
+          "development"
+        ]
+      },
+      "description": "Keep at least the development image",
+      "rulePriority": 10
+    },
+    {
+      "rulePriority": 20,
+      "description": "Remove images older than 90 days",
+      "selection": {
+        "tagStatus": "any",
+        "countType": "sinceImagePushed",
+        "countUnit": "days",
+        "countNumber": 30
+      },
+      "action": {
+        "type": "expire"
+      }
+    }
+  ]
+}
